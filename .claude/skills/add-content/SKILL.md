@@ -35,14 +35,14 @@ GitHub Pages.
    <meta property="og:type" content="article" />
    <meta property="og:title" content="TITLE" />
    <meta property="og:description" content="DESCRIPTION" />
-   <meta property="og:url" content="https://markcling07.github.io/Dissimilate/PATH" />
-   <meta property="og:image" content="https://markcling07.github.io/Dissimilate/PATH/IMG/OG-Card.jpg" />
+   <meta property="og:url" content="https://markcling07.github.io/ClosingSummits/PATH" />
+   <meta property="og:image" content="https://markcling07.github.io/ClosingSummits/PATH/IMG/OG-Card.jpg" />
    <meta property="og:image:width" content="1200" />
    <meta property="og:image:height" content="630" />
    <meta name="twitter:card" content="summary_large_image" />
    <meta name="twitter:title" content="TITLE" />
    <meta name="twitter:description" content="DESCRIPTION" />
-   <meta name="twitter:image" content="https://markcling07.github.io/Dissimilate/PATH/IMG/OG-Card.jpg" />
+   <meta name="twitter:image" content="https://markcling07.github.io/ClosingSummits/PATH/IMG/OG-Card.jpg" />
    ```
 
 4. **Register it in the homepage** — add an object to the `articles` array in `index.html`

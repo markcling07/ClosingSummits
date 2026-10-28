@@ -3,7 +3,7 @@ import react from '@astrojs/react';
 
 // The built page is served from a subfolder of a static site, both locally
 // (localhost:8899/Essays/Cling/The-Essay/) and on GitHub Pages
-// (/Dissimilate/Essays/Cling/The-Essay/). All asset URLs must therefore be
+// (/ClosingSummits/Essays/Cling/The-Essay/). All asset URLs must therefore be
 // RELATIVE — publish.mjs rewrites the absolute /_astro/ paths after build.
 export default defineConfig({
   integrations: [react()],

@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Dissimilate is a **static website** — a curated journal of essays and Philippine mountain-climbing logs. Plain hand-written **HTML/CSS/vanilla JS**. No build step, no framework, no package manager, no tests. Edit files and open them in a browser (use VS Code Live Server for the JS-driven homepage carousel).
 
-Deployed via **GitHub Pages** at https://markcling07.github.io/Dissimilate/. Pushing to `main` publishes the site.
+Deployed via **GitHub Pages** at https://markcling07.github.io/ClosingSummits/. Pushing to `main` publishes the site.
 
 ## Structure
 

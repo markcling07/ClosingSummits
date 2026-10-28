@@ -4,41 +4,41 @@
 > logs, written and photographed by a small circle of authors. Hand-built
 > static site; every page's full text is in its HTML.
 
-Site: https://markcling07.github.io/Dissimilate/
+Site: https://markcling07.github.io/ClosingSummits/
 
 ## Mountain logs
 
-- [Mt. Negron Traverse](https://markcling07.github.io/Dissimilate/Authors/Star/Negron/): Star's 38–40 km backtrail traverse of Pampanga's highest peak — 16 river crossings, 24+ hours on trail.
-- [Mt. Kotkot × Mt. Bukaw Full Circuit](https://markcling07.github.io/Dissimilate/Authors/Star/Kotkot%20%C3%97%20Bukaw/): Star's twin-hike circuit — ridge lines, waterfalls below Bukaw, trail running in the rain.
-- [Mt. Makiling Traverse](https://markcling07.github.io/Dissimilate/Authors/Star/Makiling/): Star's traverse via Sipit Trail — cloud-forest canopy, a rare Rafflesia bloom, a trail-run descent.
-- [Mt. Apo (Shieka)](https://markcling07.github.io/Dissimilate/Authors/Shieka/Apo/): Shieka's photo journal of the Kapatagan–Digos route to the Philippines' highest summit.
-- [Mt. Sumagaya to Mt. Lumot](https://markcling07.github.io/Dissimilate/Authors/Shieka/Sumagaya/): Shieka's cloud-forest crossing in Claveria, Misamis Oriental.
-- [Sumagaya — One Mountain, Two Climbs](https://markcling07.github.io/Dissimilate/Authors/Raul/): Raul climbed Mt. Sumagaya in 1996; two years later Cebu Pacific Flight 387 crashed into the same ridge.
-- [Mt. Apo (Genesis)](https://markcling07.github.io/Dissimilate/Authors/Genesis/Apo/): Genesis on Apo's boulder fields and mossy forests.
-- [Mt. Apo (Tristan)](https://markcling07.github.io/Dissimilate/Authors/Tristan/Apo/): Tristan's account of the same range.
-- [Buko-buko Peak](https://markcling07.github.io/Dissimilate/Authors/Kim/Buko-buko%20Peak/): Kim's climb.
-- [Mt. Matutum](https://markcling07.github.io/Dissimilate/Authors/Lera%20%26%20Lara/Matutum/): Lera & Lara's twin log.
-- [Mt. Kotkot & Bukaw (Allison)](https://markcling07.github.io/Dissimilate/Authors/Allison/Kotkot%20x%20Bukaw/): Allison's soft, flower-picking diary of the same circuit.
-- [Mt. Batulao](https://markcling07.github.io/Dissimilate/Authors/Oli/Batulao/): Oli's golden-ridge climb.
-- [Mt. Lumot × Mt. Sumagaya Traverse (Gladys)](https://markcling07.github.io/Dissimilate/Authors/Gladys/Sumagaya/): Gladys's graph-paper photo journal of the mossy-forest traverse.
-- [Into the Moss — Mt. Balatukan (Gladys)](https://markcling07.github.io/Dissimilate/Authors/Gladys/Balatukan/): three days through Camp Rosas Pandan and Camp Enting to the 2,450-MASL summit.
+- [Mt. Negron Traverse](https://markcling07.github.io/ClosingSummits/Authors/Star/Negron/): Star's 38–40 km backtrail traverse of Pampanga's highest peak — 16 river crossings, 24+ hours on trail.
+- [Mt. Kotkot × Mt. Bukaw Full Circuit](https://markcling07.github.io/ClosingSummits/Authors/Star/Kotkot%20%C3%97%20Bukaw/): Star's twin-hike circuit — ridge lines, waterfalls below Bukaw, trail running in the rain.
+- [Mt. Makiling Traverse](https://markcling07.github.io/ClosingSummits/Authors/Star/Makiling/): Star's traverse via Sipit Trail — cloud-forest canopy, a rare Rafflesia bloom, a trail-run descent.
+- [Mt. Apo (Shieka)](https://markcling07.github.io/ClosingSummits/Authors/Shieka/Apo/): Shieka's photo journal of the Kapatagan–Digos route to the Philippines' highest summit.
+- [Mt. Sumagaya to Mt. Lumot](https://markcling07.github.io/ClosingSummits/Authors/Shieka/Sumagaya/): Shieka's cloud-forest crossing in Claveria, Misamis Oriental.
+- [Sumagaya — One Mountain, Two Climbs](https://markcling07.github.io/ClosingSummits/Authors/Raul/): Raul climbed Mt. Sumagaya in 1996; two years later Cebu Pacific Flight 387 crashed into the same ridge.
+- [Mt. Apo (Genesis)](https://markcling07.github.io/ClosingSummits/Authors/Genesis/Apo/): Genesis on Apo's boulder fields and mossy forests.
+- [Mt. Apo (Tristan)](https://markcling07.github.io/ClosingSummits/Authors/Tristan/Apo/): Tristan's account of the same range.
+- [Buko-buko Peak](https://markcling07.github.io/ClosingSummits/Authors/Kim/Buko-buko%20Peak/): Kim's climb.
+- [Mt. Matutum](https://markcling07.github.io/ClosingSummits/Authors/Lera%20%26%20Lara/Matutum/): Lera & Lara's twin log.
+- [Mt. Kotkot & Bukaw (Allison)](https://markcling07.github.io/ClosingSummits/Authors/Allison/Kotkot%20x%20Bukaw/): Allison's soft, flower-picking diary of the same circuit.
+- [Mt. Batulao](https://markcling07.github.io/ClosingSummits/Authors/Oli/Batulao/): Oli's golden-ridge climb.
+- [Mt. Lumot × Mt. Sumagaya Traverse (Gladys)](https://markcling07.github.io/ClosingSummits/Authors/Gladys/Sumagaya/): Gladys's graph-paper photo journal of the mossy-forest traverse.
+- [Into the Moss — Mt. Balatukan (Gladys)](https://markcling07.github.io/ClosingSummits/Authors/Gladys/Balatukan/): three days through Camp Rosas Pandan and Camp Enting to the 2,450-MASL summit.
 
 ## Essays
 
-- [Essays dashboard](https://markcling07.github.io/Dissimilate/Essays/): the shared author dashboard for Dissimilate's essayists — Cling, Obito, Makima, and Kuvira — listing published essays and drafts in progress.
-- [Investment in General Santos & Sarangani, still worth it?](https://markcling07.github.io/Dissimilate/Essays/Cling/The-Essay/): after the June 2026 earthquake, Cling counts the economic cost to workers and vendors of General Santos City and Sarangani — and asks whether business and capital are still worth pouring into the region.
-- [People Envy the Crown, Not the Weight](https://markcling07.github.io/Dissimilate/Essays/Obito/People-Envy-the-Crown/People-Envy-the-Crown.html): Obito's reflection on the invisible toll of success, power, and legacy.
-- [The Architecture of the Human Animal](https://markcling07.github.io/Dissimilate/Essays/Makima/The-Architecture-of-the-Human-Animal/The-Architecture-of-the-Human-Animal.html): Makima's exploration of human psychology, control, dependency, and validation.
-- [The Burden of Restoring Order](https://markcling07.github.io/Dissimilate/Essays/Kuvira/The-Burden-of-Restoring-Order/The-Burden-of-Restoring-Order.html): Kuvira's reflection on political philosophy, authority, and the discipline of restoring order.
+- [Essays dashboard](https://markcling07.github.io/ClosingSummits/Essays/): the shared author dashboard for Dissimilate's essayists — Cling, Obito, Makima, and Kuvira — listing published essays and drafts in progress.
+- [Investment in General Santos & Sarangani, still worth it?](https://markcling07.github.io/ClosingSummits/Essays/Cling/The-Essay/): after the June 2026 earthquake, Cling counts the economic cost to workers and vendors of General Santos City and Sarangani — and asks whether business and capital are still worth pouring into the region.
+- [People Envy the Crown, Not the Weight](https://markcling07.github.io/ClosingSummits/Essays/Obito/People-Envy-the-Crown/People-Envy-the-Crown.html): Obito's reflection on the invisible toll of success, power, and legacy.
+- [The Architecture of the Human Animal](https://markcling07.github.io/ClosingSummits/Essays/Makima/The-Architecture-of-the-Human-Animal/The-Architecture-of-the-Human-Animal.html): Makima's exploration of human psychology, control, dependency, and validation.
+- [The Burden of Restoring Order](https://markcling07.github.io/ClosingSummits/Essays/Kuvira/The-Burden-of-Restoring-Order/The-Burden-of-Restoring-Order.html): Kuvira's reflection on political philosophy, authority, and the discipline of restoring order.
 
 ## Author profiles
 
-- [Star](https://markcling07.github.io/Dissimilate/Authors/Star/): trail runner; three logs above.
-- [Shieka](https://markcling07.github.io/Dissimilate/Authors/Shieka/): album-style profile of her climbs.
-- [Gladys](https://markcling07.github.io/Dissimilate/Authors/Gladys/): graph-paper profile linking her two Misamis Oriental logs.
-- [Cling](https://markcling07.github.io/Dissimilate/Essays/Cling/): dashboard-style profile of his first-person essays on the economy, work, and society.
+- [Star](https://markcling07.github.io/ClosingSummits/Authors/Star/): trail runner; three logs above.
+- [Shieka](https://markcling07.github.io/ClosingSummits/Authors/Shieka/): album-style profile of her climbs.
+- [Gladys](https://markcling07.github.io/ClosingSummits/Authors/Gladys/): graph-paper profile linking her two Misamis Oriental logs.
+- [Cling](https://markcling07.github.io/ClosingSummits/Essays/Cling/): dashboard-style profile of his first-person essays on the economy, work, and society.
 
 ## Reference pages
 
-- [Mt. Apo](https://markcling07.github.io/Dissimilate/Mountains/Apo/Apo.html): mountain dashboard.
-- [Mt. Matutum](https://markcling07.github.io/Dissimilate/Mountains/Matutum/matutum.html): mountain dashboard.
+- [Mt. Apo](https://markcling07.github.io/ClosingSummits/Mountains/Apo/Apo.html): mountain dashboard.
+- [Mt. Matutum](https://markcling07.github.io/ClosingSummits/Mountains/Matutum/matutum.html): mountain dashboard.

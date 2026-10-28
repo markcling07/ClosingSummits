@@ -30,4 +30,4 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
-Sitemap: https://markcling07.github.io/Dissimilate/sitemap.xml
+Sitemap: https://markcling07.github.io/ClosingSummits/sitemap.xml

@@ -1,7 +1,7 @@
 /**
  * Copies the Astro build output up into the essay folder (the level GitHub
  * Pages serves) and relativizes asset URLs so the page works both on
- * localhost:8899 (repo served at root) and under /Dissimilate/ on Pages.
+ * localhost:8899 (repo served at root) and under /ClosingSummits/ on Pages.
  *
  * Run via `npm run build` — never edit ../index.html by hand; it is generated.
  */
