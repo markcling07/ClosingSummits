@@ -35,6 +35,10 @@ clean and `2` when problems exist.
 - **Known noise**: legacy non-live pages (e.g. `Essays/Mountains/Why We Climb/`) may contain
   stale links. When doing a full-repo scan, focus on files you actually edited or that the
   `articles` array references; ignore breakage inside folders `CLAUDE.md` marks as non-live.
+- **Uncommitted drafts**: an `articles` entry with `isDraft: true` can point at a folder that
+  exists only on the author's machine (e.g. `Authors/Aki/Pulag/`), so a clean checkout reports
+  it as not found. The homepage hides drafts, so this isn't live breakage — mention it, but
+  don't "fix" it by deleting the entry. It must resolve before the draft flips to `false`.
 
 After reporting, offer to fix the references (matching the exact on-disk name); don't rename
 the on-disk files unless the user asks.
