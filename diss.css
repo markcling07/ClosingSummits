@@ -384,78 +384,14 @@ body {
     box-shadow: 0 4px 12px rgba(79, 99, 216, 0.22);
 }
 
-/* ============================================================
-   POSTER HERO + REVAMP (Diss-Design reference)
-   ============================================================ */
-.poster-hero {
-    position: relative;
-    min-height: 86vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: clamp(28px, 5vw, 64px);
-    color: #ffffff;
+/* Hidden on screen, still read by search engines and screen readers */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
     overflow: hidden;
-    background:
-        url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='84'%20height='84'%3E%3Crect%20x='12'%20y='12'%20width='60'%20height='60'%20rx='14'%20fill='none'%20stroke='%23ffffff'%20stroke-opacity='0.22'%20stroke-width='1.4'/%3E%3C/svg%3E"),
-        linear-gradient(165deg, #c2cbf6 0%, #93a0f0 45%, #6072e8 100%);
-}
-.poster-row {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.78rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    font-weight: 600;
-    color: rgba(255, 255, 255, 0.85);
-}
-.poster-center {
-    position: relative;
-    z-index: 2;
-    margin: auto 0;
-    max-width: 900px;
-}
-.poster-title {
-    font-weight: 800;
-    font-size: clamp(2.8rem, 7vw, 6rem);
-    line-height: 1.0;
-    letter-spacing: -0.03em;
-    margin-bottom: 1.4rem;
-    text-shadow: 0 4px 30px rgba(40, 50, 120, 0.18);
-}
-.poster-sub {
-    font-size: clamp(1rem, 1.4vw, 1.2rem);
-    line-height: 1.65;
-    max-width: 620px;
-    color: rgba(255, 255, 255, 0.92);
-    margin-bottom: 2.2rem;
-}
-.poster-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: #ffffff;
-    color: #1b1f33;
-    padding: 13px 26px;
-    border-radius: 40px;
-    font-weight: 700;
-    font-size: 0.95rem;
-    text-decoration: none;
-    box-shadow: 0 12px 30px rgba(40, 50, 120, 0.25);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-.poster-pill:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 16px 38px rgba(40, 50, 120, 0.32);
-}
-.poster-pill-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--accent);
+    clip-path: inset(50%);
+    white-space: nowrap;
 }
 
 /* Retheme touch-ups */
@@ -466,10 +402,6 @@ body {
 }
 .search-input {
     border-radius: 40px;
-}
-
-@media (max-width: 600px) {
-    .poster-hero { min-height: 78vh; }
 }
 
 /* ==========================================================================
