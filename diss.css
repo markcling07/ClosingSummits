@@ -602,6 +602,7 @@ body {
 
 /* Center and pad standard content sections */
 .library-section,
+.mountains-section,
 .authors-showcase {
     max-width: 1200px;
     width: 100%;
@@ -617,6 +618,191 @@ body {
     margin-top: 50px;
     border-top: 1px solid var(--border);
     padding-top: 50px;
+}
+
+/* ==========================================================================
+   MOUNTAINS BY DIFFICULTY
+   ========================================================================== */
+.mountains-section {
+    margin-top: 50px;
+    border-top: 1px solid var(--border);
+    padding-top: 50px;
+}
+
+.mountains-intro {
+    max-width: 680px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.mountains-search {
+    margin-bottom: 16px;
+}
+
+.mountain-levels {
+    flex-wrap: wrap;
+}
+
+.level-count {
+    font-size: 0.75em;
+    font-weight: 600;
+    opacity: 0.7;
+    margin-left: 2px;
+}
+
+.mountains-count {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin: 20px 0 12px;
+}
+
+.mountain-list {
+    list-style: none;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+}
+
+.mountain-row {
+    display: grid;
+    grid-template-columns: 56px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 18px;
+}
+
+.mountain-row + .mountain-row {
+    border-top: 1px solid var(--border);
+}
+
+.mountain-empty {
+    padding: 28px 18px;
+    color: var(--text-secondary);
+}
+
+/* Difficulty colors: 1-3 easy, 4-6 moderate, 7-9 hard */
+.tier-easy {
+    --tier: #0b7a6d;
+}
+
+.tier-moderate {
+    --tier: #4553c4;
+}
+
+.tier-hard {
+    --tier: #c0264a;
+}
+
+.tier-unrated {
+    --tier: #5f6478;
+}
+
+.difficulty-mark {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    width: 52px;
+    padding: 9px 0;
+    border-radius: var(--border-radius-sm);
+    background-color: var(--tier);
+    color: #ffffff;
+    font-size: 1.25rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.difficulty-mark small {
+    font-size: 0.7rem;
+    font-weight: 600;
+    opacity: 0.85;
+}
+
+.difficulty-mark.tier-unrated {
+    display: block;
+    padding: 8px 0;
+    font-size: 0.7rem;
+    font-weight: 700;
+    line-height: 1.15;
+    text-align: center;
+}
+
+.mountain-name {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.mountain-route {
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.mountain-details {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-top: 2px;
+}
+
+.mountain-closed {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #b42318;
+    margin-left: 4px;
+}
+
+.mountain-logs {
+    list-style: none;
+    margin-top: 8px;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.mountain-logs li + li {
+    margin-top: 2px;
+}
+
+.mountain-logs a {
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.mountain-source {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent);
+    white-space: nowrap;
+}
+
+.mountains-credit {
+    max-width: 760px;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-top: 16px;
+}
+
+.mountains-credit a {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.card-header-end {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.card-difficulty {
+    padding: 2px 8px;
+    border-radius: 20px;
+    background-color: var(--tier);
+    color: #ffffff;
+    font-size: 0.7rem;
+    white-space: nowrap;
 }
 
 /* ==========================================================================
@@ -1322,6 +1508,7 @@ body {
    ========================================================================== */
 @media (max-width: 1024px) {
     .library-section,
+    .mountains-section,
     .authors-showcase {
         padding-left: 24px;
         padding-right: 24px;
@@ -1353,9 +1540,23 @@ body {
 
 @media (max-width: 640px) {
     .library-section,
+    .mountains-section,
     .authors-showcase {
         padding-left: 16px;
         padding-right: 16px;
+    }
+
+    .mountain-row {
+        grid-template-columns: 52px minmax(0, 1fr);
+        align-items: start;
+        gap: 12px;
+        padding: 14px;
+    }
+    .mountain-source {
+        grid-column: 2;
+    }
+    .mountain-levels {
+        overflow-x: visible;
     }
 
     .content-header {

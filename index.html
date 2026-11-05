@@ -79,6 +79,28 @@
                 </div>
             </section>
 
+            <!-- Mountains by Difficulty -->
+            <section class="mountains-section" id="mountains-section">
+                <h3 class="authors-title">Mountains by Difficulty</h3>
+                <p class="mountains-intro">Difficulty runs from 1, an easy walk, to 9, the hardest climbs in the country. The rating depends on the trail, so a mountain can appear more than once. Logs from our writers are listed under the climb they cover.</p>
+
+                <div class="search-wrapper mountains-search">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="mountain-search" class="search-input" placeholder="Search mountain, trail, province..." aria-label="Search mountains">
+                </div>
+
+                <div class="category-pills mountain-levels" id="mountain-levels" role="group" aria-label="Filter mountains by difficulty">
+                    <!-- Rendered dynamically -->
+                </div>
+
+                <p class="mountains-count" id="mountains-count" aria-live="polite"></p>
+                <ul class="mountain-list" id="mountain-list">
+                    <!-- Rendered dynamically -->
+                </ul>
+
+                <p class="mountains-credit">Ratings, heights and locations are from <a href="https://www.pinoymountaineer.com/" target="_blank" rel="noopener">Pinoy Mountaineer</a> by Gideon Lasco, whose 1&ndash;9 scale this list uses. Many ratings are years old and trail conditions change, so check the current status before you climb.</p>
+            </section>
+
             <!-- Authors Section -->
             <section class="authors-showcase" id="authors-section">
                 <h3 class="authors-title">Meet Our Authors</h3>
@@ -586,6 +608,7 @@
     </div>
 
     <!-- JavaScript logic -->
+    <script src="mountains.js"></script>
     <script>
         // Database of essays and pages
         const articles = [
@@ -624,6 +647,7 @@
                 title: "Into the Moss — Mt. Balatukan",
                 author: "Gladys",
                 category: "Mountains",
+                routes: ["balatukan"],
                 readTime: "6 min read",
                 path: "Authors/Gladys/Balatukan/index.html",
                 description: "Three days in the mossy heart of the Balatukan Range — through Camp Rosas Pandan and Camp Enting to a 2,450-MASL summit above Gingoog, Misamis Oriental.",
@@ -639,6 +663,7 @@
                 title: "Mt. Lumot × Mt. Sumagaya Traverse",
                 author: "Gladys",
                 category: "Mountains",
+                routes: ["sumagaya", "lumot"],
                 readTime: "4 min read",
                 path: "Authors/Gladys/Sumagaya/index.html",
                 description: "Gladys climbs the Mt. Lumot to Mt. Sumagaya traverse — a long day through the mossy forest of the Central Mindanao Cordillera.",
@@ -669,6 +694,7 @@
                 title: "Mount Matutum Climb",
                 author: "Lera & Lara",
                 category: "Mountains",
+                routes: ["matutum"],
                 readTime: "6 min read",
                 path: "Authors/Lera & Lara/Matutum/index.html",
                 description: "A travel log documenting the climb of Mount Matutum, exploring its steep volcanic trails, pulling up via massive tree roots, and navigating its sacred mossy forest sanctuary.",
@@ -729,6 +755,7 @@
                 title: "Mt. Apo: The Flame & The Moss",
                 author: "Genesis",
                 category: "Mountains",
+                routes: ["apo-kapatagan"],
                 readTime: "8 min read",
                 path: "Authors/Genesis/Apo/index.html",
                 description: "An immersive log of the climb up Mount Apo, conquering steep forest sanctuaries, sulfuric vapor-vents, and standing above the clouds.",
@@ -744,6 +771,7 @@
                 title: "Mt. Apo: The Long Way Up",
                 author: "Tristan",
                 category: "Mountains",
+                routes: ["apo-bansalan"],
                 readTime: "6 min read",
                 path: "Authors/Tristan/Apo/index.html",
                 description: "A photo journal of the climb up Mount Apo via the Bansalan Trail — through mossy forest and cogon grassland, past the highland tarns and Lake Venado, to the sulfur vents and the summit above a sea of clouds.",
@@ -759,6 +787,7 @@
                 title: "Mt. Apo: Roof of the Philippines",
                 author: "Explorer",
                 category: "Mountains",
+                routes: ["apo-unspecified"],
                 readTime: "15 min read",
                 path: "Mountains/Apo/Apo.html",
                 description: "A travel log documenting the ascent of the highest peak in the Philippines, climbing through sulfuric vents and ancient mossy woodlands.",
@@ -774,6 +803,7 @@
                 title: "Mt. Matutum",
                 author: "Explorer",
                 category: "Mountains",
+                routes: ["matutum"],
                 readTime: "5 min read",
                 path: "Mountains/Matutum/matutum.html",
                 description: "A brief tribute to a solitary stratovolcano of southern Mindanao — crater waters, mossy forests, and the patient, layered complexity of its slopes.",
@@ -789,6 +819,7 @@
                 title: "Mt. Sumagaya",
                 author: "Explorer",
                 category: "Mountains",
+                routes: ["sumagaya"],
                 readTime: "4 min read",
                 path: "Mountains/Sumagaya/sumagaya.html",
                 description: "A curated profile of Mt. Sumagaya — a 2,248-meter peak in Claveria, Misamis Oriental, known for its hard trails, the Central Mindanao Cordillera, and the memorial to Cebu Pacific Flight 387.",
@@ -804,6 +835,7 @@
                 title: "Mt. Makiling Traverse",
                 author: "Star",
                 category: "Mountains",
+                routes: ["makiling-traverse"],
                 readTime: "6 min read",
                 path: "Authors/Star/Makiling/index.html",
                 description: "A travel log documenting the traverse of Mt. Makiling via Sipit Trail Batangas, hiking through dense canopy, rare Rafflesia blooms, and trail running the descent.",
@@ -819,6 +851,7 @@
                 title: "Mt. Kotkot × Mt. Bukaw Full Circuit",
                 author: "Star",
                 category: "Mountains",
+                routes: ["kotkot"],
                 readTime: "5 min read",
                 path: "Authors/Star/Kotkot × Bukaw/index.html",
                 description: "A travel log documenting the twin hike full circuit traverse, trail running in the rain, Negron team adventures, and scenic mountain views.",
@@ -834,6 +867,7 @@
                 title: "My Little Adventure up Mt. Kotkot & Bukaw",
                 author: "Allison",
                 category: "Mountains",
+                routes: ["kotkot"],
                 readTime: "4 min read",
                 path: "Authors/Allison/Kotkot x Bukaw/index.html",
                 description: "A soft and simple diary of hiking Mt. Kotkot and Mt. Bukaw — the flowers, the cows, the muddy trails, and the friends who made it sweet.",
@@ -849,6 +883,7 @@
                 title: "Mt. Negron Traverse",
                 author: "Star",
                 category: "Mountains",
+                routes: ["negron"],
                 readTime: "7 min read",
                 path: "Authors/Star/Negron/index.html",
                 description: "A travel log documenting the grueling 38-40KM backtrail traverse, 16 river crossings, 90° steep assaults, Jek and Josh's trail support, and a magical 3AM river dip.",
@@ -864,6 +899,7 @@
                 title: "Mt. Batulao Traverse",
                 author: "Oli",
                 category: "Mountains",
+                routes: ["batulao"],
                 readTime: "5 min read",
                 path: "Authors/Oli/Batulao/index.html",
                 description: "A travel log documenting the climb of Mt. Batulao in Nasugbu, Batangas, scrambling up its rugged, rocky spines and riding along its wind-swept ridges.",
@@ -879,6 +915,7 @@
                 title: "Sumagaya — One Mountain, Two Climbs",
                 author: "Raul",
                 category: "Mountains",
+                routes: ["sumagaya"],
                 readTime: "4 min read",
                 path: "Authors/Raul/index.html",
                 description: "Raul climbed Mt. Sumagaya in 1996. Two years later, Cebu Pacific Flight 387 crashed into the same ridge. This is what the mountain keeps.",
@@ -894,6 +931,7 @@
                 title: "Mt. Apo: Top of the Philippines",
                 author: "Shieka",
                 category: "Mountains",
+                routes: ["apo-kapatagan"],
                 readTime: "4 min read",
                 path: "Authors/Shieka/Apo/index.html",
                 description: "Shieka's photo journal of climbing Mt. Apo via the Kapatagan–Digos trail — boulder fields, a frosty night push, and the summit sign at 2,954 MASL.",
@@ -909,6 +947,7 @@
                 title: "Mt. Sumagaya traverse Mt. Lumot",
                 author: "Shieka",
                 category: "Mountains",
+                routes: ["sumagaya", "lumot"],
                 readTime: "4 min read",
                 path: "Authors/Shieka/Sumagaya/index.html",
                 description: "Shieka's photo journal of the Mt. Sumagaya to Mt. Lumot traverse — a 2,248-meter cloud-forest crossing in Claveria, Misamis Oriental.",
@@ -941,10 +980,21 @@
         const categoryPills = document.getElementById("category-pills");
         const gridTitle = document.getElementById("grid-title");
 
+        const mountainSearch = document.getElementById("mountain-search");
+        const mountainLevels = document.getElementById("mountain-levels");
+        const mountainList = document.getElementById("mountain-list");
+        const mountainsCount = document.getElementById("mountains-count");
+
+        // Mountains section state
+        let mountainLevel = "logged"; // "logged", "unrated", or a difficulty from 1 to 9
+        let mountainQuery = "";
+
         // Initialization
         window.addEventListener("DOMContentLoaded", () => {
             renderCarousel();
             renderFeed();
+            renderMountainLevels();
+            renderMountains();
             setupEventListeners();
             
             // Check for saved theme preference
@@ -982,6 +1032,22 @@
                     currentCategory = e.target.getAttribute("data-category");
                     renderFeed();
                 }
+            });
+
+            // Mountains section search and difficulty pills
+            mountainSearch.addEventListener("input", (e) => {
+                mountainQuery = e.target.value.toLowerCase().trim();
+                renderMountains();
+            });
+
+            mountainLevels.addEventListener("click", (e) => {
+                const btn = e.target.closest(".pill-btn");
+                if (!btn) return;
+                const level = btn.getAttribute("data-level");
+                mountainLevel = /^\d$/.test(level) ? Number(level) : level;
+                mountainQuery = "";
+                mountainSearch.value = "";
+                renderMountains();
             });
 
             // Touch gestures for swipe
@@ -1244,7 +1310,7 @@
                     <div class="card-body">
                         <div class="card-header">
                             <span class="card-category">${art.category}</span>
-                            <span>${art.readTime}</span>
+                            <span class="card-header-end">${difficultyBadge(art)}<span>${art.readTime}</span></span>
                         </div>
                         <h2 class="card-title">${art.title}</h2>
                         <p class="card-desc">${art.description}</p>
@@ -1263,6 +1329,78 @@
                 
                 cardsGrid.appendChild(card);
             });
+        }
+
+        // Mountains by Difficulty
+        const escapeHtml = (s) => String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
+        const difficultyTier = (d) => d === null ? "unrated" : d <= 3 ? "easy" : d <= 6 ? "moderate" : "hard";
+
+        // Published logs for a mountain row, from each article's `routes`
+        function logsFor(mountain) {
+            return articles.filter(art => !art.isDraft && (art.routes || []).includes(mountain.id));
+        }
+
+        // A log is categorized by the first mountain in its `routes`
+        function difficultyBadge(art) {
+            const mountain = mountains.find(m => m.id === (art.routes || [])[0]);
+            if (!mountain) return "";
+            const label = mountain.d === null ? "Not rated" : `Difficulty ${mountain.d}/9`;
+            return `<span class="card-difficulty tier-${difficultyTier(mountain.d)}">${label}</span>`;
+        }
+
+        function renderMountainLevels() {
+            const levels = [
+                { key: "logged", label: "With logs", count: mountains.filter(m => logsFor(m).length).length },
+                ...[1, 2, 3, 4, 5, 6, 7, 8, 9].map(d => ({ key: d, label: `${d}/9`, count: mountains.filter(m => m.d === d).length })),
+                { key: "unrated", label: "Not rated", count: mountains.filter(m => m.d === null).length }
+            ];
+
+            mountainLevels.innerHTML = levels.map(level => `
+                <button type="button" class="pill-btn" data-level="${level.key}" aria-pressed="false">
+                    ${level.label} <span class="level-count">${level.count}</span>
+                </button>
+            `).join("");
+        }
+
+        function renderMountains() {
+            const matches = mountains.filter(m => {
+                // A search looks through every mountain, whichever level is selected
+                if (mountainQuery) {
+                    return [m.name, m.route, m.where].join(" ").toLowerCase().includes(mountainQuery);
+                }
+                if (mountainLevel === "logged") return logsFor(m).length > 0;
+                if (mountainLevel === "unrated") return m.d === null;
+                return m.d === mountainLevel;
+            }).sort((a, b) => (b.masl || 0) - (a.masl || 0));
+
+            mountainLevels.querySelectorAll(".pill-btn").forEach(btn => {
+                const on = !mountainQuery && btn.getAttribute("data-level") === String(mountainLevel);
+                btn.classList.toggle("active", on);
+                btn.setAttribute("aria-pressed", String(on));
+            });
+
+            mountainsCount.textContent = `${matches.length} ${matches.length === 1 ? "climb" : "climbs"}`;
+
+            if (matches.length === 0) {
+                mountainList.innerHTML = `<li class="mountain-empty">No mountain matches "${escapeHtml(mountainSearch.value.trim())}". Try a province, or a shorter name such as Apo.</li>`;
+                return;
+            }
+
+            mountainList.innerHTML = matches.map(m => {
+                const details = [m.where, m.masl ? `${m.masl.toLocaleString("en-US")} m` : ""].filter(Boolean).join(", ");
+                const logs = logsFor(m).map(art => `<a href="${escapeHtml(art.path)}">${art.title}</a> by ${escapeHtml(art.author)}`);
+                return `
+                    <li class="mountain-row">
+                        <span class="difficulty-mark tier-${difficultyTier(m.d)}">${m.d === null ? "Not<br>rated" : `${m.d}<small>/9</small>`}</span>
+                        <div class="mountain-info">
+                            <h4 class="mountain-name">${m.name}${m.route ? ` <span class="mountain-route">${m.route}</span>` : ""}</h4>
+                            <p class="mountain-details">${details}${m.closed ? ' <span class="mountain-closed">Listed as closed</span>' : ""}</p>
+                            ${logs.length ? `<ul class="mountain-logs">${logs.map(log => `<li>${log}</li>`).join("")}</ul>` : ""}
+                        </div>
+                        ${m.src ? `<a class="mountain-source" href="https://www.pinoymountaineer.com/${m.src}.html" target="_blank" rel="noopener" aria-label="Read about ${escapeHtml(m.name)} on Pinoy Mountaineer">Trail guide</a>` : ""}
+                    </li>
+                `;
+            }).join("");
         }
     </script>
 </body>

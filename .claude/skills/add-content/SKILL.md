@@ -72,7 +72,10 @@ GitHub Pages.
 5. **Register it in the homepage** — add an object to the `articles` array in `index.html`
    (inline `<script>`; find it with grep `const articles = [`). Match the existing key set and
    copy the shape of a nearby entry:
-   `{ id, title, author, category, readTime, path, description, type, badge, isFeaturedHero, img, carouselImg, isDraft }`
+   `{ id, title, author, category, routes, readTime, path, description, type, badge, isFeaturedHero, img, carouselImg, isDraft }`
+   - `routes` (mountain logs only) lists ids from `mountains.js`, matching the trail the writer took.
+     The first id sets the difficulty badge on the card. If the climb isn't in `mountains.js`, add a
+     row with `d: null` rather than guessing a rating.
    - `path` is relative to the repo root and must match the real folder/file name **exactly**
      (case and characters).
    - `img` = card thumbnail, `carouselImg` = wider hero image (both in the piece's `IMG/`).
