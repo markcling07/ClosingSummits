@@ -629,61 +629,7 @@ body {
     padding-top: 50px;
 }
 
-.mountains-intro {
-    max-width: 680px;
-    color: var(--text-secondary);
-    line-height: 1.6;
-    margin-bottom: 24px;
-}
-
-.mountains-search {
-    margin-bottom: 16px;
-}
-
-.mountain-levels {
-    flex-wrap: wrap;
-}
-
-.level-count {
-    font-size: 0.75em;
-    font-weight: 600;
-    opacity: 0.7;
-    margin-left: 2px;
-}
-
-.mountains-count {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--text-secondary);
-    margin: 20px 0 12px;
-}
-
-.mountain-list {
-    list-style: none;
-    background-color: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--border-radius-md);
-    overflow: hidden;
-}
-
-.mountain-row {
-    display: grid;
-    grid-template-columns: 56px minmax(0, 1fr) auto;
-    align-items: center;
-    gap: 16px;
-    padding: 14px 18px;
-}
-
-.mountain-row + .mountain-row {
-    border-top: 1px solid var(--border);
-}
-
-.mountain-empty {
-    padding: 28px 18px;
-    color: var(--text-secondary);
-}
-
-/* Difficulty colors: 1-3 easy, 4-6 moderate, 7-9 hard */
+/* Difficulty colors: 1-3 easy, 4-6 moderate, 7-9 hard. Banner tiers reuse them. */
 .tier-easy {
     --tier: #0b7a6d;
 }
@@ -700,81 +646,416 @@ body {
     --tier: #5f6478;
 }
 
-.difficulty-mark {
-    display: flex;
-    align-items: baseline;
-    justify-content: center;
-    width: 52px;
-    padding: 9px 0;
-    border-radius: var(--border-radius-sm);
-    background-color: var(--tier);
-    color: #ffffff;
-    font-size: 1.25rem;
-    font-weight: 800;
-    line-height: 1;
+.tier-logged {
+    --tier: var(--accent);
 }
 
-.difficulty-mark small {
+.mountains-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px 32px;
+    margin-bottom: 24px;
+}
+
+.mountains-head .authors-title {
+    margin-bottom: 12px;
+}
+
+.mountains-intro {
+    max-width: 640px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* Banner: photo from a writer's log, changes with the selected difficulty */
+.difficulty-banner {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    min-height: 340px;
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    background-color: #1b1f33;
+    color: #ffffff;
+    box-shadow: var(--shadow-lg);
+}
+
+.banner-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: banner-in 0.6s ease;
+}
+
+.difficulty-banner::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(90deg, rgba(15, 18, 34, 0.86) 0%, rgba(15, 18, 34, 0.55) 45%, rgba(15, 18, 34, 0.05) 80%),
+        linear-gradient(0deg, rgba(15, 18, 34, 0.55) 0%, rgba(15, 18, 34, 0) 45%);
+}
+
+@keyframes banner-in {
+    from { opacity: 0.35; transform: scale(1.03); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.banner-content {
+    position: relative;
+    z-index: 1;
+    max-width: 560px;
+    padding: 40px 44px;
+}
+
+.banner-level {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 20px;
+    background-color: var(--tier);
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.banner-title {
+    font-size: clamp(1.9rem, 4vw, 2.8rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 14px 0 10px;
+}
+
+.banner-desc {
+    font-size: 1.02rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.88);
+    max-width: 480px;
+}
+
+.banner-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 24px;
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.banner-stats strong {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-right: 4px;
+}
+
+.banner-credit {
+    position: absolute;
+    z-index: 1;
+    right: 20px;
+    bottom: 16px;
+    max-width: 45%;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-align: right;
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+}
+
+.banner-credit:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+/* Difficulty scale: nine steps that rise with the rating */
+.difficulty-scale {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-areas:
+        "pills steps"
+        ". tiers";
+    gap: 8px 32px;
+    align-items: end;
+    margin-top: 28px;
+}
+
+.scale-pills {
+    grid-area: pills;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-bottom: 26px;
+}
+
+.scale-pill {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 9px 16px;
+    border: 1px solid var(--border);
+    border-radius: 40px;
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 0.875rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.scale-pill span {
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.scale-pill:hover {
+    border-color: var(--accent);
+}
+
+.scale-pill.is-active {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: #ffffff;
+}
+
+.scale-pill.is-active span {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.scale-steps {
+    grid-area: steps;
+    display: grid;
+    grid-template-columns: repeat(9, minmax(0, 1fr));
+    gap: 8px;
+    align-items: end;
+}
+
+.scale-step {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+    padding: 0;
+    border: 0;
+    background: none;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.step-bar {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    height: calc(30px + var(--step) * 11px);
+    padding-top: 8px;
+    border-radius: 10px 10px 4px 4px;
+    background-color: color-mix(in srgb, var(--tier) 22%, var(--bg-card));
+    transition: var(--transition);
+}
+
+.step-num {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--tier);
+}
+
+.step-count {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-align: center;
+    color: var(--text-muted);
+}
+
+.scale-step:hover .step-bar {
+    background-color: color-mix(in srgb, var(--tier) 40%, var(--bg-card));
+}
+
+.scale-step.is-active .step-bar {
+    background-color: var(--tier);
+    box-shadow: 0 10px 22px -8px var(--tier);
+}
+
+.scale-step.is-active .step-num {
+    color: #ffffff;
+}
+
+.scale-step.is-active .step-count {
+    color: var(--text-primary);
+}
+
+.scale-tiers {
+    grid-area: tiers;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.scale-tiers span {
+    padding-top: 6px;
+    border-top: 3px solid var(--tier);
+    color: var(--tier);
+}
+
+/* While searching, the scale steps back: results span every level */
+.difficulty-scale.is-searching .scale-step,
+.difficulty-scale.is-searching .scale-pill {
+    opacity: 0.55;
+}
+
+.mountains-count {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin: 28px 0 14px;
+}
+
+/* Climb cards */
+.mountain-grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+    gap: 16px;
+}
+
+.climb-card {
+    display: flex;
+    flex-direction: column;
+    padding: 18px 20px;
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--tier);
+    border-radius: var(--border-radius-md);
+    background-color: var(--bg-card);
+    box-shadow: var(--shadow-sm);
+}
+
+.climb-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.climb-mark {
+    padding: 4px 10px;
+    border-radius: 20px;
+    background-color: var(--tier);
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.climb-mark small {
     font-size: 0.7rem;
     font-weight: 600;
     opacity: 0.85;
 }
 
-.difficulty-mark.tier-unrated {
-    display: block;
-    padding: 8px 0;
-    font-size: 0.7rem;
+.tier-unrated .climb-mark {
+    font-size: 0.75rem;
     font-weight: 700;
-    line-height: 1.15;
-    text-align: center;
 }
 
-.mountain-name {
-    font-size: 1.05rem;
+.climb-height {
+    font-size: 0.85rem;
     font-weight: 700;
+    color: var(--text-secondary);
+}
+
+.climb-name {
+    font-size: 1.15rem;
+    font-weight: 800;
+    line-height: 1.25;
     color: var(--text-primary);
 }
 
-.mountain-route {
-    font-weight: 500;
-    color: var(--text-secondary);
-}
-
-.mountain-details {
-    font-size: 0.875rem;
-    color: var(--text-secondary);
+.climb-route {
     margin-top: 2px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--tier);
 }
 
-.mountain-closed {
+.climb-where {
+    margin-top: 4px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.climb-closed {
     display: inline-block;
+    margin-left: 4px;
     font-size: 0.75rem;
     font-weight: 700;
     color: #b42318;
-    margin-left: 4px;
 }
 
-.mountain-logs {
-    list-style: none;
-    margin-top: 8px;
-    font-size: 0.875rem;
-    color: var(--text-secondary);
+.climb-logs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--border);
 }
 
-.mountain-logs li + li {
-    margin-top: 2px;
+.climb-log {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: inherit;
+    text-decoration: none;
 }
 
-.mountain-logs a {
+.climb-log img {
+    flex: none;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--border-radius-sm);
+    object-fit: cover;
+    background-color: var(--accent-light);
+}
+
+.climb-log strong {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--text-primary);
+}
+
+.climb-log small {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+.climb-log:hover strong {
+    color: var(--accent);
+    text-decoration: underline;
+}
+
+.climb-source {
+    align-self: flex-start;
+    margin-top: auto;
+    padding-top: 14px;
+    font-size: 0.85rem;
     font-weight: 700;
     color: var(--accent);
 }
 
-.mountain-source {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--accent);
-    white-space: nowrap;
+.mountain-empty {
+    grid-column: 1 / -1;
+    padding: 28px 20px;
+    border: 1px dashed var(--border);
+    border-radius: var(--border-radius-md);
+    color: var(--text-secondary);
 }
 
 .mountains-credit {
@@ -782,12 +1063,60 @@ body {
     font-size: 0.85rem;
     line-height: 1.6;
     color: var(--text-secondary);
-    margin-top: 16px;
+    margin-top: 24px;
 }
 
 .mountains-credit a {
     color: var(--accent);
     font-weight: 600;
+}
+
+@media (max-width: 760px) {
+    .difficulty-banner {
+        min-height: 400px;
+    }
+    .difficulty-banner::after {
+        background: linear-gradient(0deg, rgba(15, 18, 34, 0.9) 0%, rgba(15, 18, 34, 0.6) 55%, rgba(15, 18, 34, 0.1) 100%);
+    }
+    .banner-content {
+        padding: 28px 22px 48px;
+    }
+    .banner-credit {
+        left: 22px;
+        right: 22px;
+        max-width: none;
+        text-align: left;
+    }
+    .difficulty-scale {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas:
+            "pills"
+            "steps"
+            "tiers";
+    }
+    .scale-pills {
+        flex-direction: row;
+        padding-bottom: 8px;
+    }
+    .scale-pill {
+        flex: 1;
+    }
+    .scale-steps,
+    .scale-tiers {
+        gap: 4px;
+    }
+    .step-bar {
+        height: calc(26px + var(--step) * 8px);
+    }
+    .step-num {
+        font-size: 0.95rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .banner-img {
+        animation: none;
+    }
 }
 
 .card-header-end {
@@ -1544,19 +1873,6 @@ body {
     .authors-showcase {
         padding-left: 16px;
         padding-right: 16px;
-    }
-
-    .mountain-row {
-        grid-template-columns: 52px minmax(0, 1fr);
-        align-items: start;
-        gap: 12px;
-        padding: 14px;
-    }
-    .mountain-source {
-        grid-column: 2;
-    }
-    .mountain-levels {
-        overflow-x: visible;
     }
 
     .content-header {

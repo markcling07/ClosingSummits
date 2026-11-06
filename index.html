@@ -81,20 +81,28 @@
 
             <!-- Mountains by Difficulty -->
             <section class="mountains-section" id="mountains-section">
-                <h3 class="authors-title">Mountains by Difficulty</h3>
-                <p class="mountains-intro">Difficulty runs from 1, an easy walk, to 9, the hardest climbs in the country. The rating depends on the trail, so a mountain can appear more than once. Logs from our writers are listed under the climb they cover.</p>
-
-                <div class="search-wrapper mountains-search">
-                    <span class="search-icon">🔍</span>
-                    <input type="text" id="mountain-search" class="search-input" placeholder="Search mountain, trail, province..." aria-label="Search mountains">
+                <div class="mountains-head">
+                    <div>
+                        <h3 class="authors-title">Mountains by Difficulty</h3>
+                        <p class="mountains-intro">Each climb is rated from 1 to 9 on Pinoy Mountaineer's scale, which weighs trail length, preparation, travel and terrain. The rating belongs to the trail, so one mountain can appear more than once.</p>
+                    </div>
+                    <div class="search-wrapper mountains-search">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" id="mountain-search" class="search-input" placeholder="Search mountain, trail, province..." aria-label="Search mountains">
+                    </div>
                 </div>
 
-                <div class="category-pills mountain-levels" id="mountain-levels" role="group" aria-label="Filter mountains by difficulty">
+                <!-- Banner for the selected difficulty -->
+                <div class="difficulty-banner" id="difficulty-banner">
+                    <!-- Rendered dynamically -->
+                </div>
+
+                <div class="difficulty-scale" id="mountain-levels" role="group" aria-label="Filter mountains by difficulty">
                     <!-- Rendered dynamically -->
                 </div>
 
                 <p class="mountains-count" id="mountains-count" aria-live="polite"></p>
-                <ul class="mountain-list" id="mountain-list">
+                <ul class="mountain-grid" id="mountain-list">
                     <!-- Rendered dynamically -->
                 </ul>
 
@@ -984,6 +992,7 @@
         const mountainLevels = document.getElementById("mountain-levels");
         const mountainList = document.getElementById("mountain-list");
         const mountainsCount = document.getElementById("mountains-count");
+        const difficultyBanner = document.getElementById("difficulty-banner");
 
         // Mountains section state
         let mountainLevel = "logged"; // "logged", "unrated", or a difficulty from 1 to 9
@@ -1041,7 +1050,7 @@
             });
 
             mountainLevels.addEventListener("click", (e) => {
-                const btn = e.target.closest(".pill-btn");
+                const btn = e.target.closest("[data-level]");
                 if (!btn) return;
                 const level = btn.getAttribute("data-level");
                 mountainLevel = /^\d$/.test(level) ? Number(level) : level;
@@ -1348,18 +1357,76 @@
             return `<span class="card-difficulty tier-${difficultyTier(mountain.d)}">${label}</span>`;
         }
 
-        function renderMountainLevels() {
-            const levels = [
-                { key: "logged", label: "With logs", count: mountains.filter(m => logsFor(m).length).length },
-                ...[1, 2, 3, 4, 5, 6, 7, 8, 9].map(d => ({ key: d, label: `${d}/9`, count: mountains.filter(m => m.d === d).length })),
-                { key: "unrated", label: "Not rated", count: mountains.filter(m => m.d === null).length }
-            ];
+        // What each level means, and the banner photo for it. Photos come from our writers' logs
+        // (the article's carouselImg unless `img` names another of its photos); `pos` is the CSS
+        // object-position used to crop the portrait photo into a wide banner.
+        const levelInfo = {
+            1: { title: "Easy walks", desc: "Short walks on clear paths, closer to a nature trip than a climb." },
+            2: { title: "Gentle day hikes", desc: "Easy half-day hikes with mild slopes. A good first mountain." },
+            3: { title: "Beginner-friendly climbs", desc: "Day hikes with some steep or rocky parts that most beginners can manage with a guide." },
+            4: { title: "Long day hikes", desc: "Steady climbs that fill most of a day, with sections where you use your hands." },
+            5: { title: "Major climbs", desc: "Usually an overnight trip with a long ascent. Plan for camping gear and good fitness." },
+            6: { title: "Hard major climbs", desc: "Steep, muddy or long trails that test experienced hikers, often over two days." },
+            7: { title: "Very hard climbs", desc: "Long, sustained ascents or traverses that need solid experience and careful planning." },
+            8: { title: "Expedition traverses", desc: "Multi-day crossings over rough, remote terrain, for hikers with several major climbs behind them." },
+            9: { title: "The toughest climbs", desc: "The hardest hikes in the country, such as Mt. Guiting-Guiting and Mt. Halcon." },
+            logged: { title: "Climbs our writers have logged", desc: "Every climb with a story on Dissimilate. Pick a number on the scale to see what else is out there at that level." },
+            unrated: { title: "Not yet rated", desc: "Climbs our writers have logged that Pinoy Mountaineer hasn't rated yet." }
+        };
+        const bannerPhotos = {
+            easy: { article: "mt-batulao-oli", peak: "Mt. Batulao", pos: "50% 28%" },
+            moderate: { article: "mt-matutum", peak: "Mt. Matutum", pos: "50% 55%" },
+            hard: { article: "mt-negron-star", peak: "Mt. Negron", pos: "50% 42%" },
+            unrated: { article: "mt-balatukan", peak: "Mt. Balatukan", pos: "50% 45%" },
+            logged: { article: "shieka-apo", peak: "Mt. Apo", img: "Authors/Shieka/Apo/IMG/Hero.jpg", pos: "50% 34%" }
+        };
 
-            mountainLevels.innerHTML = levels.map(level => `
-                <button type="button" class="pill-btn" data-level="${level.key}" aria-pressed="false">
-                    ${level.label} <span class="level-count">${level.count}</span>
+        function renderMountainLevels() {
+            const count = (filter) => mountains.filter(filter).length;
+            const steps = [1, 2, 3, 4, 5, 6, 7, 8, 9].map(d => `
+                <button type="button" class="scale-step tier-${difficultyTier(d)}" data-level="${d}" aria-pressed="false" aria-label="Difficulty ${d}, ${count(m => m.d === d)} climbs" style="--step:${d}">
+                    <span class="step-bar"><span class="step-num">${d}</span></span>
+                    <span class="step-count">${count(m => m.d === d)}</span>
                 </button>
             `).join("");
+
+            mountainLevels.innerHTML = `
+                <div class="scale-pills">
+                    <button type="button" class="scale-pill" data-level="logged" aria-pressed="false">With logs <span>${count(m => logsFor(m).length)}</span></button>
+                    <button type="button" class="scale-pill" data-level="unrated" aria-pressed="false">Not rated <span>${count(m => m.d === null)}</span></button>
+                </div>
+                <div class="scale-steps">${steps}</div>
+                <div class="scale-tiers" aria-hidden="true">
+                    <span class="tier-easy">Easy</span>
+                    <span class="tier-moderate">Moderate</span>
+                    <span class="tier-hard">Hard</span>
+                </div>
+            `;
+        }
+
+        function renderDifficultyBanner() {
+            const info = levelInfo[mountainLevel];
+            const tier = typeof mountainLevel === "number" ? difficultyTier(mountainLevel) : mountainLevel;
+            const photo = bannerPhotos[tier];
+            const art = articles.find(a => a.id === photo.article);
+            const pictured = mountains.find(m => (art.routes || [])[0] === m.id);
+            const inLevel = mountains.filter(m => typeof mountainLevel === "number" ? m.d === mountainLevel
+                : mountainLevel === "unrated" ? m.d === null : logsFor(m).length);
+            const logged = inLevel.filter(m => logsFor(m).length).length;
+            const label = typeof mountainLevel === "number" ? `Difficulty ${mountainLevel} of 9`
+                : mountainLevel === "unrated" ? "Not rated" : "From our writers";
+
+            difficultyBanner.className = `difficulty-banner tier-${tier}`;
+            difficultyBanner.innerHTML = `
+                <img class="banner-img" src="${escapeHtml(photo.img || art.carouselImg || art.img)}" alt="" style="object-position:${photo.pos}">
+                <div class="banner-content">
+                    <span class="banner-level">${label}</span>
+                    <h4 class="banner-title">${info.title}</h4>
+                    <p class="banner-desc">${info.desc}</p>
+                    <p class="banner-stats"><span><strong>${inLevel.length}</strong> ${inLevel.length === 1 ? "climb" : "climbs"}</span><span><strong>${logged}</strong> with logs from our writers</span></p>
+                </div>
+                <a class="banner-credit" href="${escapeHtml(art.path)}">${photo.peak}${pictured && pictured.d ? ` (${pictured.d}/9)` : ""}, photo by ${escapeHtml(art.author)}</a>
+            `;
         }
 
         function renderMountains() {
@@ -1373,13 +1440,17 @@
                 return m.d === mountainLevel;
             }).sort((a, b) => (b.masl || 0) - (a.masl || 0));
 
-            mountainLevels.querySelectorAll(".pill-btn").forEach(btn => {
+            mountainLevels.querySelectorAll("[data-level]").forEach(btn => {
                 const on = !mountainQuery && btn.getAttribute("data-level") === String(mountainLevel);
-                btn.classList.toggle("active", on);
+                btn.classList.toggle("is-active", on);
                 btn.setAttribute("aria-pressed", String(on));
             });
+            mountainLevels.classList.toggle("is-searching", Boolean(mountainQuery));
 
-            mountainsCount.textContent = `${matches.length} ${matches.length === 1 ? "climb" : "climbs"}`;
+            renderDifficultyBanner();
+            mountainsCount.textContent = mountainQuery
+                ? `${matches.length} ${matches.length === 1 ? "climb matches" : "climbs match"} "${mountainSearch.value.trim()}"`
+                : `${matches.length} ${matches.length === 1 ? "climb" : "climbs"}, highest first`;
 
             if (matches.length === 0) {
                 mountainList.innerHTML = `<li class="mountain-empty">No mountain matches "${escapeHtml(mountainSearch.value.trim())}". Try a province, or a shorter name such as Apo.</li>`;
@@ -1387,17 +1458,22 @@
             }
 
             mountainList.innerHTML = matches.map(m => {
-                const details = [m.where, m.masl ? `${m.masl.toLocaleString("en-US")} m` : ""].filter(Boolean).join(", ");
-                const logs = logsFor(m).map(art => `<a href="${escapeHtml(art.path)}">${art.title}</a> by ${escapeHtml(art.author)}`);
+                const logs = logsFor(m).map(art => `
+                    <a class="climb-log" href="${escapeHtml(art.path)}">
+                        <img src="${escapeHtml(art.img)}" alt="" loading="lazy">
+                        <span><strong>${art.title}</strong><small>by ${escapeHtml(art.author)}</small></span>
+                    </a>`).join("");
                 return `
-                    <li class="mountain-row">
-                        <span class="difficulty-mark tier-${difficultyTier(m.d)}">${m.d === null ? "Not<br>rated" : `${m.d}<small>/9</small>`}</span>
-                        <div class="mountain-info">
-                            <h4 class="mountain-name">${m.name}${m.route ? ` <span class="mountain-route">${m.route}</span>` : ""}</h4>
-                            <p class="mountain-details">${details}${m.closed ? ' <span class="mountain-closed">Listed as closed</span>' : ""}</p>
-                            ${logs.length ? `<ul class="mountain-logs">${logs.map(log => `<li>${log}</li>`).join("")}</ul>` : ""}
+                    <li class="climb-card tier-${difficultyTier(m.d)}">
+                        <div class="climb-top">
+                            <span class="climb-mark">${m.d === null ? "Not rated" : `${m.d}<small>/9</small>`}</span>
+                            ${m.masl ? `<span class="climb-height">${m.masl.toLocaleString("en-US")} m</span>` : ""}
                         </div>
-                        ${m.src ? `<a class="mountain-source" href="https://www.pinoymountaineer.com/${m.src}.html" target="_blank" rel="noopener" aria-label="Read about ${escapeHtml(m.name)} on Pinoy Mountaineer">Trail guide</a>` : ""}
+                        <h4 class="climb-name">${m.name}</h4>
+                        ${m.route ? `<p class="climb-route">${m.route}</p>` : ""}
+                        <p class="climb-where">${m.where || "Philippines"}${m.closed ? ' <span class="climb-closed">Listed as closed</span>' : ""}</p>
+                        ${logs ? `<div class="climb-logs">${logs}</div>` : ""}
+                        ${m.src ? `<a class="climb-source" href="https://www.pinoymountaineer.com/${m.src}.html" target="_blank" rel="noopener" aria-label="Trail guide for ${escapeHtml(m.name)} on Pinoy Mountaineer">Trail guide</a>` : ""}
                     </li>
                 `;
             }).join("");
