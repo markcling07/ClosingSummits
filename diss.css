@@ -1071,6 +1071,29 @@ body {
     font-weight: 600;
 }
 
+.mountains-browse {
+    margin-top: 20px;
+}
+
+.mountains-browse a {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 10px 20px;
+    border-radius: 40px;
+    background-color: var(--accent);
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.mountains-browse a:hover {
+    background-color: var(--accent-hover);
+    box-shadow: var(--shadow-md);
+}
+
 @media (max-width: 760px) {
     .difficulty-banner {
         min-height: 400px;
